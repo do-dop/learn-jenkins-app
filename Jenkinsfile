@@ -59,6 +59,15 @@ pipeline {
             }
         }
 
+        stage('Approval') {
+            steps {
+                
+                timeout(time: 1, unit: 'MINUTES') {
+                    input '운영 환경에 배포할까요?'
+                }
+            }
+        }
+
         stage('Deploy prod') {
             
             steps {
